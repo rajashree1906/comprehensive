@@ -46,7 +46,7 @@ public class AdminServiceImplementation implements AdminService{
 	@Override
 	public Product saveProduct(Product product) {
 		Product p = restTemplate.postForObject("http://localhost:9008/v1/api/registerproduct", product, Product.class);
-		return null;
+		return p;
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.admin.entity.Admin;
@@ -16,6 +17,7 @@ import com.admin.service.AdminService;
 
 @RestController
 @CrossOrigin(origins = "*")
+@RequestMapping("/admin")
 
 //@CrossOrigin(origins = "http://localhost:53850")
 public class AdminController {
@@ -24,6 +26,7 @@ public class AdminController {
 	private AdminService adminService;
 	
 	 @PostMapping("/adminlogin")
+//	@GetMapping("/adminlogin")
 	  public Admin loginAdmin(@RequestBody Admin admin) throws Exception
 	  {
 	      String username=admin.getUsername();
@@ -44,22 +47,22 @@ public class AdminController {
 	
 	
 	
-	@PostMapping("/admin/addUser")
+	@PostMapping("/addUser")
 	public User saveUser(@RequestBody User user) {
 		return adminService.saveUser(user);
 	}
 	
-	@GetMapping("/admin/showUsers")
+	@GetMapping("/showUsers")
 	public List<User>findAllUser(){
 		return adminService.findAll();
 	}
 	
-	@PostMapping("admin/addProduct")
+	@PostMapping("/addProduct")
 	public Product saveProduct(@RequestBody Product product) {
 		return adminService.saveProduct(product);
 	}
 	
-	@GetMapping("/admin/showProducts")
+	@GetMapping("/showProducts")
 	public List<Product> getAllProducts(){
 		return adminService.getAllProducts();
 	}
